@@ -1,0 +1,73 @@
+using System;
+namespace MMlogo
+{
+    class Program
+    {
+        static void Main()
+        {
+            int n = int.Parse(Console.ReadLine());
+            //Restricting input to odd numbers
+            if (n % 2 != 1)
+            {
+                Console.WriteLine("Please enter an odd number");
+                return; //return in case of even numbers
+            }
+            //Find the middle of the input number
+            double mid = n / 2;
+
+            //numbers to make pattern. Initiate them with the input number
+            int count1 = n;
+            int count2 = n;
+            int count3 = n;
+
+            //Loop to run for total number of lines which is always input number n+1
+            for (int i = 0; i <= n; i++)
+            {
+                //sequence to follow uptil the middle of n
+                if (i <= mid)
+                {
+                    Console.Write(new string('-', count3));
+                    Console.Write(new string('*', count2));
+                    Console.Write(new string('-', count1));
+                    Console.Write(new string('*', count2));
+                    Console.Write(new string('-', count3));
+                    Console.Write(new string('-', count3));
+                    Console.Write(new string('*', count2));
+                    Console.Write(new string('-', count1));
+                    Console.Write(new string('*', count2));
+                    Console.Write(new string('-', count3));
+                    Console.WriteLine("");
+
+                    count1 = count1 - 2;
+                    count2 = count2 + 2;                   
+                    --count3;
+                }
+                //sequence to follow after the middle lines
+                else
+                {
+                    count1 = count1 + 2;
+                    count2 = count2 - 2;
+                    Console.Write(new string('-', count3));
+                    Console.Write(new string('*', n));
+                    Console.Write(new string('-', count1));
+                    Console.Write(new string('*', count2));
+                    Console.Write(new string('-', count1));
+                    Console.Write(new string('*', n));
+                    Console.Write(new string('-', count3));
+                    Console.Write(new string('-', count3));
+                    Console.Write(new string('*', n));
+                    Console.Write(new string('-', count1));
+                    Console.Write(new string('*', count2));
+                    Console.Write(new string('-', count1));
+                    Console.Write(new string('*', n));
+                    Console.Write(new string('-', count3));
+                    Console.WriteLine("");
+                    //corner and middle - decreased by 1
+                    --count3;
+                }
+
+            }
+
+        }
+    }
+}
